@@ -141,6 +141,7 @@ class SimpleConsumerThread<T> extends Thread {
 		final String clientId = "flink-kafka-consumer-legacy-" + broker.id();
 
 		try {
+			// NOTE - TINY: low level kafka consumer, called by Kafka08Fetcher.runFetchLoop.createAndStartSimpleConsumerThread
 			// create the Kafka consumer that we actually use for fetching
 			consumer = new SimpleConsumer(broker.host(), broker.port(), soTimeout, bufferSize, clientId);
 

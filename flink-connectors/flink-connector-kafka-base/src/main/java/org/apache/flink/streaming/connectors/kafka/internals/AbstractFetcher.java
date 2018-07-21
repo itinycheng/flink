@@ -331,6 +331,7 @@ public abstract class AbstractFetcher<T, KPH> {
 
 		HashMap<KafkaTopicPartition, Long> state = new HashMap<>(subscribedPartitionStates.size());
 		for (KafkaTopicPartitionState<KPH> partition : subscribedPartitionStates) {
+			// NOTE - TINY: <TopicPartition, partition.offset>
 			state.put(partition.getKafkaTopicPartition(), partition.getOffset());
 		}
 		return state;
@@ -343,6 +344,7 @@ public abstract class AbstractFetcher<T, KPH> {
 	/**
 	 * Emits a record without attaching an existing timestamp to it.
 	 *
+	 * NOTE - TINY: JIT inlining friendly
 	 * <p>Implementation Note: This method is kept brief to be JIT inlining friendly.
 	 * That makes the fast path efficient, the extended paths are called as separate methods.
 	 *
