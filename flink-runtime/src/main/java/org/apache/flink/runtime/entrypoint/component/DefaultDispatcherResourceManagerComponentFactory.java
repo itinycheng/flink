@@ -156,7 +156,7 @@ public class DefaultDispatcherResourceManagerComponentFactory implements Dispatc
 				blobServer,
 				executor,
 				metricFetcher,
-				highAvailabilityServices.getClusterRestEndpointLeaderElectionService(),
+				highAvailabilityServices.getClusterRestEndpointLeaderElectionService(),  // rest_server_lock
 				fatalErrorHandler);
 
 			log.debug("Starting Dispatcher REST endpoint.");
@@ -192,7 +192,7 @@ public class DefaultDispatcherResourceManagerComponentFactory implements Dispatc
 
 			log.debug("Starting Dispatcher.");
 			dispatcherRunner = dispatcherRunnerFactory.createDispatcherRunner(
-				highAvailabilityServices.getDispatcherLeaderElectionService(),
+				highAvailabilityServices.getDispatcherLeaderElectionService(), // dispatcher_lock
 				fatalErrorHandler,
 				new HaServicesJobGraphStoreFactory(highAvailabilityServices),
 				ioExecutor,
@@ -200,7 +200,7 @@ public class DefaultDispatcherResourceManagerComponentFactory implements Dispatc
 				partialDispatcherServices);
 
 			log.debug("Starting ResourceManager.");
-			resourceManager.start();
+			resourceManager.start();	// resource_manager_lock
 
 			resourceManagerRetrievalService.start(resourceManagerGatewayRetriever);
 			dispatcherLeaderRetrievalService.start(dispatcherGatewayRetriever);

@@ -125,6 +125,7 @@ public class DefaultSchedulerFactory implements SchedulerNGFactory {
 		}
 	}
 
+	// NOTE - TINY: slot allocator
 	private static ExecutionSlotAllocatorFactory createExecutionSlotAllocatorFactory(
 			final ScheduleMode scheduleMode,
 			final SlotProvider slotProvider,

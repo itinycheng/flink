@@ -882,6 +882,7 @@ public class StreamingJobGraphGenerator {
 		// currently, these are all vertices
 		List<JobVertexID> commitVertices = new ArrayList<>(jobVertices.size());
 
+		// NOTE - TINY: if this is a Source Vertex, add it to trigger checkpoint list
 		for (JobVertex vertex : jobVertices.values()) {
 			if (vertex.isInputVertex()) {
 				triggerVertices.add(vertex.getID());

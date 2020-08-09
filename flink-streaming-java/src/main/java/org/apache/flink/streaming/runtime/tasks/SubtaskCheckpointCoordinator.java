@@ -53,6 +53,7 @@ public interface SubtaskCheckpointCoordinator extends Closeable {
 	void abortCheckpointOnBarrier(long checkpointId, Throwable cause, OperatorChain<?, ?> operatorChain) throws IOException;
 
 	/**
+	 * NOTE - TINY: actually execute checkpoint method
 	 * Must be called after {@link #initCheckpoint(long, CheckpointOptions)}.
 	 */
 	void checkpointState(

@@ -452,6 +452,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 	}
 
 	/**
+	 * DEPLOY APPLICATION
 	 * This method will block until the ApplicationMaster/JobManager have been deployed on YARN.
 	 *
 	 * @param clusterSpecification Initial cluster specification for the Flink cluster to be deployed
@@ -510,6 +511,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 
 		final ClusterSpecification validClusterSpecification;
 		try {
+			// validate whether there have enough resources
 			validClusterSpecification = validateClusterResources(
 					clusterSpecification,
 					yarnMinAllocationMB,
@@ -916,7 +918,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 				localizedKeytabPath = flinkConfiguration.getString(YarnConfigOptions.LOCALIZED_KEYTAB_PATH);
 			}
 		}
-
+		// TINY-NOTE: UPLOADER END
 		final JobManagerProcessSpec processSpec = JobManagerProcessUtils.processSpecFromConfigWithNewOptionToInterpretLegacyHeap(
 			flinkConfiguration,
 			JobManagerOptions.TOTAL_PROCESS_MEMORY);
@@ -1007,6 +1009,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 		Thread deploymentFailureHook = new DeploymentFailureHook(yarnApplication, fileUploader.getApplicationDir());
 		Runtime.getRuntime().addShutdownHook(deploymentFailureHook);
 		LOG.info("Submitting application master " + appId);
+		// submit application master
 		yarnClient.submitApplication(appContext);
 
 		LOG.info("Waiting for the cluster to be allocated");

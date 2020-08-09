@@ -1248,6 +1248,7 @@ public class DataStream<T> {
 		// read the output type of the input Transform to coax out errors about MissingTypeInfo
 		transformation.getOutputType();
 
+		// create Transformation include input-DataStream and operator(wrapped up in operatorFactory)
 		OneInputTransformation<T, R> resultTransform = new OneInputTransformation<>(
 				this.transformation,
 				operatorName,
@@ -1255,6 +1256,7 @@ public class DataStream<T> {
 				outTypeInfo,
 				environment.getParallelism());
 
+		// create DataStream for return value
 		@SuppressWarnings({"unchecked", "rawtypes"})
 		SingleOutputStreamOperator<R> returnStream = new SingleOutputStreamOperator(environment, resultTransform);
 

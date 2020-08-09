@@ -212,6 +212,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 		return channelStateWriter;
 	}
 
+	// NOTE - TINY: checkpoint action
 	@Override
 	public void checkpointState(
 			CheckpointMetaData metadata,

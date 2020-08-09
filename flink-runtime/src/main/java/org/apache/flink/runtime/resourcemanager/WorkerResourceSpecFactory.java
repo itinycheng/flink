@@ -30,7 +30,9 @@ public abstract class WorkerResourceSpecFactory {
 
 	public abstract WorkerResourceSpec createDefaultWorkerResourceSpec(Configuration configuration);
 
+	// NOTE - TINY: create WorkerResourceSpec for Yarn/Mesos/K8s's ResourceManager
 	protected WorkerResourceSpec workerResourceSpecFromConfigAndCpu(Configuration configuration, CPUResource cpuResource) {
+		// NOTE - TINY: create TaskExecutorProcessSpec
 		final TaskExecutorProcessSpec taskExecutorProcessSpec = TaskExecutorProcessUtils
 			.newProcessSpecBuilder(configuration)
 			.withCpuCores(cpuResource)

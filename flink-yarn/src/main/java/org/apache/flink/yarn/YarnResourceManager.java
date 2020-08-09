@@ -213,7 +213,7 @@ public class YarnResourceManager extends ActiveResourceManager<YarnWorkerNode>
 			if (lastColon == -1) {
 				restPort = -1;
 			} else {
-				restPort = Integer.valueOf(webInterfaceUrl.substring(lastColon + 1));
+				restPort = Integer.parseInt(webInterfaceUrl.substring(lastColon + 1));
 			}
 		} else {
 			restPort = -1;
@@ -329,6 +329,7 @@ public class YarnResourceManager extends ActiveResourceManager<YarnWorkerNode>
 		Utils.deleteApplicationFiles(env);
 	}
 
+	// NOTE - TINY: allocate resource using WorkerResourceSpec
 	@Override
 	public boolean startNewWorker(WorkerResourceSpec workerResourceSpec) {
 		return requestYarnContainer(workerResourceSpec);
@@ -386,6 +387,7 @@ public class YarnResourceManager extends ActiveResourceManager<YarnWorkerNode>
 		);
 	}
 
+	// NOTE - TINY: start TaskManger's container, invoke by
 	@Override
 	public void onContainersAllocated(List<Container> containers) {
 		runAsync(() -> {

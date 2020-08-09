@@ -114,16 +114,31 @@ public class TaskExecutorFlinkMemory implements FlinkMemory {
 		return managed;
 	}
 
+	/**
+	 * taskmanager.memory.framework.heap.size
+	 * taskmanager.memory.task.heap.size
+	 */
 	@Override
 	public MemorySize getJvmHeapMemorySize() {
 		return frameworkHeap.add(taskHeap);
 	}
 
+	/**
+	 * taskmanager.memory.framework.off-heap.size
+	 * taskmanager.memory.task.off-heap.size
+	 *
+	 * taskmanager.memory.network.fraction
+	 * taskmanager.memory.network.max
+	 * taskmanager.memory.network.min
+	 */
 	@Override
 	public MemorySize getJvmDirectMemorySize() {
 		return frameworkOffHeap.add(taskOffHeap).add(network);
 	}
 
+	/**
+	 *
+	 */
 	@Override
 	public MemorySize getTotalFlinkMemorySize() {
 		return frameworkHeap.add(frameworkOffHeap).add(taskHeap).add(taskOffHeap).add(network).add(managed);

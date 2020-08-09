@@ -78,6 +78,7 @@ public class ExecutorUtils {
 				sn -> sn.setResources(ResourceSpec.UNKNOWN, ResourceSpec.UNKNOWN));
 		streamGraph.setChaining(true);
 		streamGraph.setAllVerticesInSameSlotSharingGroupByDefault(false);
+		// NOTE - TINY: batch job schedule module
 		streamGraph.setScheduleMode(ScheduleMode.LAZY_FROM_SOURCES_WITH_BATCH_SLOT_REQUEST);
 		streamGraph.setStateBackend(null);
 		if (streamGraph.getCheckpointConfig().isCheckpointingEnabled()) {

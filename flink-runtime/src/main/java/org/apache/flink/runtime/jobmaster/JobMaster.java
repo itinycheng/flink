@@ -607,6 +607,7 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 		disconnectTaskManager(resourceId, new FlinkException(String.format("No more slots registered at JobMaster %s.", resourceId)));
 	}
 
+	// NOTE - TINY: register TaskManager
 	@Override
 	public CompletableFuture<RegistrationResponse> registerTaskManager(
 			final String taskManagerRpcAddress,
@@ -920,7 +921,7 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 				}
 			);
 		}
-
+		// NOTE - TINY: TODO
 		schedulerAssignedFuture.thenRun(this::startScheduling);
 	}
 

@@ -136,6 +136,9 @@ public class ProcessMemoryUtils<FM extends FlinkMemory> {
 		return jvmMetaspaceAndOverhead;
 	}
 
+	/**
+	 * calc size of metaspace & overhead
+	 */
 	public JvmMetaspaceAndOverhead deriveJvmMetaspaceAndOverheadFromTotalFlinkMemory(
 			Configuration config,
 			MemorySize totalFlinkMemorySize) {

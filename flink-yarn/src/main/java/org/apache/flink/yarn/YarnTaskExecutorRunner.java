@@ -63,6 +63,7 @@ public class YarnTaskExecutorRunner {
 	// ------------------------------------------------------------------------
 
 	/**
+	 * NOTE - TINY: start TaskManager
 	 * The entry point for the YARN task executor runner.
 	 *
 	 * @param args The command line arguments.

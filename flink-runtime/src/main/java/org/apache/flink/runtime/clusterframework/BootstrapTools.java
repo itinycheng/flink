@@ -400,6 +400,7 @@ public class BootstrapTools {
 		final Map<String, String> startCommandValues = new HashMap<>();
 		startCommandValues.put("java", "$JAVA_HOME/bin/java");
 
+		// NOTE - TINY: generate TaskManager's JVM opts
 		final TaskExecutorProcessSpec taskExecutorProcessSpec = tmParams.getTaskExecutorProcessSpec();
 		startCommandValues.put("jvmmem", ProcessMemoryUtils.generateJvmParametersStr(taskExecutorProcessSpec));
 
@@ -435,7 +436,7 @@ public class BootstrapTools {
 		startCommandValues.put("redirects",
 			"1> " + logDirectory + "/taskmanager.out " +
 			"2> " + logDirectory + "/taskmanager.err");
-
+		// NOTE - TINY: string value of TaskManager's memory config
 		String argsStr = TaskExecutorProcessUtils.generateDynamicConfigsStr(taskExecutorProcessSpec) + " --configDir " + configDirectory;
 		if (!mainArgs.isEmpty()) {
 			argsStr += " " + mainArgs;

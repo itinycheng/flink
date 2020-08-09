@@ -36,6 +36,7 @@ public class CheckpointCoordinatorDeActivator implements JobStatusListener {
 		this.coordinator = checkNotNull(coordinator);
 	}
 
+	// NOTE - TINY: start checkpoint
 	@Override
 	public void jobStatusChanges(JobID jobId, JobStatus newJobStatus, long timestamp, Throwable error) {
 		if (newJobStatus == JobStatus.RUNNING) {

@@ -135,6 +135,7 @@ public class PackagedProgram {
 			getClass().getClassLoader(),
 			configuration);
 
+		// user's main class
 		// load the entry point class
 		this.mainClass = loadMainClass(
 			// if no entryPointClassName name was given, we try and look one up through the manifest

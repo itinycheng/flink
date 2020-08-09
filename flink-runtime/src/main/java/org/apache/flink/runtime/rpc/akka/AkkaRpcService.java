@@ -221,7 +221,7 @@ public class AkkaRpcService implements RpcService {
 		final SupervisorActor.ActorRegistration actorRegistration = registerAkkaRpcActor(rpcEndpoint);
 		final ActorRef actorRef = actorRegistration.getActorRef();
 		final CompletableFuture<Void> actorTerminationFuture = actorRegistration.getTerminationFuture();
-
+		// Starting RPC endpoint for org.apache.flink.runtime.dispatcher.MiniDispatcher at akka://flink/user/dispatcher .
 		LOG.info("Starting RPC endpoint for {} at {} .", rpcEndpoint.getClass().getName(), actorRef.path());
 
 		final String akkaAddress = AkkaUtils.getAkkaURL(actorSystem, actorRef);

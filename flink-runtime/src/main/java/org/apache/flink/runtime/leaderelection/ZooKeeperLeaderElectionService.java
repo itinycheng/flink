@@ -220,6 +220,7 @@ public class ZooKeeperLeaderElectionService implements LeaderElectionService, Le
 		return leaderLatch.hasLeadership() && leaderSessionId.equals(issuedLeaderSessionID);
 	}
 
+	// NOTE - TINY: start dispatcher while node is leader
 	@Override
 	public void isLeader() {
 		synchronized (lock) {

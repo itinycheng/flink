@@ -310,7 +310,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 			executionVertexVersioner.recordVertexModifications(verticesToDeploy);
 
 		transitionToScheduled(verticesToDeploy);
-
+		// NOTE - TINY: TODO
 		final List<SlotExecutionVertexAssignment> slotExecutionVertexAssignments =
 			allocateSlots(executionVertexDeploymentOptions);
 

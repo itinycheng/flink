@@ -30,7 +30,16 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 public class JvmMetaspaceAndOverhead implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * taskmanager.memory.jvm-metaspace.size
+	 */
 	private final MemorySize metaspace;
+
+	/**
+	 * taskmanager.memory.jvm-overhead.fraction
+	 * taskmanager.memory.jvm-overhead.min
+	 * taskmanager.memory.jvm-overhead.max
+	 */
 	private final MemorySize overhead;
 
 	public JvmMetaspaceAndOverhead(MemorySize jvmMetaspace, MemorySize jvmOverhead) {

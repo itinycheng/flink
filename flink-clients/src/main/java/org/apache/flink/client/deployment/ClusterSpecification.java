@@ -19,6 +19,7 @@
 package org.apache.flink.client.deployment;
 
 /**
+ * TINY - NOTE: describe job resources info used for validating whether cluster have enough resource
  * Description of the cluster to start by the {@link ClusterDescriptor}.
  */
 public final class ClusterSpecification {

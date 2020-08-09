@@ -60,6 +60,7 @@ public class YarnJobClusterEntrypoint extends JobClusterEntrypoint {
 	// ------------------------------------------------------------------------
 	//  The executable entry point for the Yarn Application Master Process
 	//  for a single Flink job.
+	//  NOTE - TINY: maybe contains codes about determined JVM opts of TaskManager
 	// ------------------------------------------------------------------------
 
 	public static void main(String[] args) {

@@ -117,6 +117,7 @@ class WorkerSpecContainerResourceAdapter {
 		return equivalentInternalContainerResources;
 	}
 
+	// NOTE - TINY: create TaskManager resource from WorkerResourceSpec
 	@Nullable
 	private InternalContainerResource createAndMapContainerResource(final WorkerResourceSpec workerResourceSpec) {
 		final TaskExecutorProcessSpec taskExecutorProcessSpec =

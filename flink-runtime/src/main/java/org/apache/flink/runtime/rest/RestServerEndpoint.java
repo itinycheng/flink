@@ -158,7 +158,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
 			checkAllEndpointsAndHandlersAreUnique(handlers);
 			handlers.forEach(handler -> registerHandler(router, handler, log));
 
-			ChannelInitializer<SocketChannel> initializer = new ChannelInitializer<SocketChannel>() {
+			ChannelInitializer<SocketChannel> initializer = new ChannelInitializer<>() {
 
 				@Override
 				protected void initChannel(SocketChannel ch) {

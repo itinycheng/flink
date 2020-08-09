@@ -266,6 +266,7 @@ public abstract class SchedulerBase implements SchedulerNG {
 		return newExecutionGraph;
 	}
 
+	// NOTE - TINY: convert JobGraph to ExecutionGraph
 	private ExecutionGraph createExecutionGraph(
 		JobManagerJobMetricGroup currentJobManagerJobMetricGroup,
 		ShuffleMaster<?> shuffleMaster,

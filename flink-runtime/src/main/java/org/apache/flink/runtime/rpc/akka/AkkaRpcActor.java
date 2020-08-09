@@ -135,6 +135,7 @@ class AkkaRpcActor<T extends RpcEndpoint & RpcGateway> extends AbstractActor {
 		state = state.finishTermination();
 	}
 
+	// NOTE - TINY: create receiver
 	@Override
 	public Receive createReceive() {
 		return ReceiveBuilder.create()
@@ -163,6 +164,7 @@ class AkkaRpcActor<T extends RpcEndpoint & RpcGateway> extends AbstractActor {
 		}
 	}
 
+	// handle control messages
 	private void handleControlMessage(ControlMessages controlMessage) {
 		try {
 			switch (controlMessage) {

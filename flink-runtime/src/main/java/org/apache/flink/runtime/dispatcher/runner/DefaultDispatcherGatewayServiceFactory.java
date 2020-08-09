@@ -52,6 +52,7 @@ class DefaultDispatcherGatewayServiceFactory implements AbstractDispatcherLeader
 		this.partialDispatcherServices = partialDispatcherServices;
 	}
 
+	// NOTE - TINY: start dispatcher
 	@Override
 	public AbstractDispatcherLeaderProcess.DispatcherGatewayService create(
 			DispatcherId fencingToken,

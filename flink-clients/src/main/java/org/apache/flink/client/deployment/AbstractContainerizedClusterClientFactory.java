@@ -33,6 +33,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 @Internal
 public abstract class AbstractContainerizedClusterClientFactory<ClusterID> implements ClusterClientFactory<ClusterID> {
 
+	// NOTE - TINY: init ClusterSpecification used for setting container resource.
 	@Override
 	public ClusterSpecification getClusterSpecification(Configuration configuration) {
 		checkNotNull(configuration);
