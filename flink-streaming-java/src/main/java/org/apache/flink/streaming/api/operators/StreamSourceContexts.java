@@ -170,6 +170,7 @@ public class StreamSourceContexts {
 				new WatermarkEmittingTask(this.timeService, checkpointLock, output));
 		}
 
+		// NOTE - TINY: forward record
 		@Override
 		protected void processAndCollect(T element) {
 			lastRecordTime = this.timeService.getCurrentProcessingTime();

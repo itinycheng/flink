@@ -109,6 +109,7 @@ public class StreamTaskStateInitializerImpl implements StreamTaskStateInitialize
 
 	// -----------------------------------------------------------------------------------------------------------------
 
+	// NOTE - TINY: invoked by initializeState
 	@Override
 	public StreamOperatorStateContext streamOperatorStateContext(
 		@Nonnull OperatorID operatorID,

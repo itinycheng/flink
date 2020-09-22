@@ -654,6 +654,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 				throw new TaskSubmissionException("Could not submit task.", e);
 			}
 
+			// NOTE - TINY: start Task
 			if (taskAdded) {
 				task.startTaskThread();
 
@@ -816,6 +817,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 	// Checkpointing RPCs
 	// ----------------------------------------------------------------------
 
+	// NOTE - TINY: trigger checkpoint of source task
 	@Override
 	public CompletableFuture<Acknowledge> triggerCheckpoint(
 			ExecutionAttemptID executionAttemptID,

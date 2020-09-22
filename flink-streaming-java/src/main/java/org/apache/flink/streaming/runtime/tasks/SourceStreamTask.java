@@ -36,6 +36,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 /**
+ * TINY - NOTE : those words is very important
+ *
  * {@link StreamTask} for executing a {@link StreamSource}.
  *
  * <p>One important aspect of this is that the checkpointing and the emission of elements must never
@@ -155,7 +157,7 @@ public class SourceStreamTask<OUT, SRC extends SourceFunction<OUT>, OP extends S
 	}
 
 	@Override
-	protected void finishTask() throws Exception {
+	protected void finishTask() {
 		isFinished = true;
 		cancelTask();
 	}

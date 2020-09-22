@@ -426,6 +426,7 @@ public class WindowOperator<K, IN, ACC, OUT, W extends Window>
 		}
 	}
 
+	// NOTE - TINY:  emit/clear window
 	@Override
 	public void onEventTime(InternalTimer<K, W> timer) throws Exception {
 		triggerContext.key = timer.getKey();

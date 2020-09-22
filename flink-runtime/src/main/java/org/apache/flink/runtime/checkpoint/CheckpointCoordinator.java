@@ -1018,6 +1018,7 @@ public class CheckpointCoordinator {
 
 		try {
 			try {
+				// NOTE - TINY: write operator state to `_metadata` file
 				completedCheckpoint = pendingCheckpoint.finalizeCheckpoint();
 				failureManager.handleCheckpointSuccess(pendingCheckpoint.getCheckpointId());
 			}
@@ -1552,6 +1553,7 @@ public class CheckpointCoordinator {
 
 	// ------------------------------------------------------------------------
 
+	// NOTE - TINY: trigger checkpoint
 	private final class ScheduledTrigger implements Runnable {
 
 		@Override

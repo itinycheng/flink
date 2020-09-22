@@ -63,6 +63,7 @@ public final class KeyGroupRangeAssignment {
 	}
 
 	/**
+	 * TINY- NOTE: assign state key to diff KeyGroup
 	 * Assigns the given key to a key-group index.
 	 *
 	 * @param keyHash the hash of the key to assign
@@ -74,6 +75,7 @@ public final class KeyGroupRangeAssignment {
 	}
 
 	/**
+	 * TODO TINY - NOTE: calc key group range
 	 * Computes the range of key-groups that are assigned to a given operator under the given parallelism and maximum
 	 * parallelism.
 	 *

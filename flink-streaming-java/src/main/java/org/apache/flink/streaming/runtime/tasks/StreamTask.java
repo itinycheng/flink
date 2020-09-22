@@ -519,6 +519,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 	@Override
 	public final void invoke() throws Exception {
 		try {
+			// create state backend and call initializeState and open Operators
 			beforeInvoke();
 
 			// final check to exit early before starting to run
@@ -789,6 +790,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 			boolean advanceToEndOfEventTime) {
 
 		CompletableFuture<Boolean> result = new CompletableFuture<>();
+		// NOTE - TINY: add checkpoint mail to main mailbox
 		mainMailboxExecutor.execute(
 				() -> {
 					try {

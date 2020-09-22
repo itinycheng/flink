@@ -167,6 +167,7 @@ public class StreamOperatorStateHandler {
 		return snapshotInProgress;
 	}
 
+	// NOTE - TINY: checkpoint action on each Operator of OperatorChain
 	@VisibleForTesting
 	void snapshotState(
 			CheckpointedStreamOperator streamOperator,

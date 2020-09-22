@@ -137,6 +137,7 @@ public final class StreamTaskNetworkInput<T> implements StreamTaskInput<T> {
 		this.channelIndexes = getChannelIndexes(checkpointedInputGate);
 	}
 
+	// NOTE - TINY: invoked by mailboxProcessor
 	@Override
 	public InputStatus emitNext(DataOutput<T> output) throws Exception {
 

@@ -137,6 +137,7 @@ public class PluginLoader {
 					return resolveIfNeeded(resolve, loadedClass);
 				}
 
+				//TODO  important
 				if (isAllowedFlinkClass(name)) {
 					try {
 						return resolveIfNeeded(resolve, flinkClassLoader.loadClass(name));
@@ -160,20 +161,11 @@ public class PluginLoader {
 
 		@Override
 		public URL getResource(final String name) {
-			if (isAllowedFlinkResource(name)) {
-				return flinkClassLoader.getResource(name);
-			}
-
 			return super.getResource(name);
 		}
 
 		@Override
 		public Enumeration<URL> getResources(final String name) throws IOException {
-			// ChildFirstClassLoader merges child and parent resources
-			if (isAllowedFlinkResource(name)) {
-				return flinkClassLoader.getResources(name);
-			}
-
 			return super.getResources(name);
 		}
 

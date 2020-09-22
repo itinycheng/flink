@@ -480,6 +480,7 @@ public class JobMaster extends FencedRpcEndpoint<JobMasterId> implements JobMast
 		return CompletableFuture.completedFuture(Acknowledge.get());
 	}
 
+	// NOTE - TINY: invoked by TaskManager, logic in AsyncCheckpointRunnable
 	// TODO: This method needs a leader session ID
 	@Override
 	public void acknowledgeCheckpoint(

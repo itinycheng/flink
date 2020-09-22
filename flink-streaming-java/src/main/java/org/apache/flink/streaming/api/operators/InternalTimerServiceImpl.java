@@ -265,6 +265,7 @@ public class InternalTimerServiceImpl<K, N> implements InternalTimerService<N> {
 		}
 	}
 
+	// NOTE - TINY: invoked when a new watermark arrived at state/keyed stream
 	public void advanceWatermark(long time) throws Exception {
 		currentWatermark = time;
 

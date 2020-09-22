@@ -349,6 +349,7 @@ public abstract class AbstractFetcher<T, KPH> {
 			T record;
 			while ((record = records.poll()) != null) {
 				long timestamp = partitionState.extractTimestamp(record, kafkaEventTimestamp);
+				// NOTE - TINY:  emit record
 				sourceContext.collectWithTimestamp(record, timestamp);
 
 				// this might emit a watermark, so do it after emitting the record

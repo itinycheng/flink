@@ -37,6 +37,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -103,5 +104,6 @@ public class DefaultPluginManagerTest extends PluginTestBase {
 			Assert.assertNotNull(otherTestSpi.otherTestMethod());
 			Assert.assertTrue(classLoaders.add(otherTestSpi.getClass().getClassLoader()));
 		}
+		System.out.println(Arrays.toString(classLoaders.toArray()));
 	}
 }

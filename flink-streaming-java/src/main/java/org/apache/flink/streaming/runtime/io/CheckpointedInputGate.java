@@ -38,6 +38,7 @@ import java.util.concurrent.CompletableFuture;
 import static org.apache.flink.util.Preconditions.checkState;
 
 /**
+ * TINY - NOTE : handle checkpointBarrier from InputGate
  * The {@link CheckpointedInputGate} uses {@link CheckpointBarrierHandler} to handle incoming
  * {@link CheckpointBarrier} from the {@link InputGate}.
  */

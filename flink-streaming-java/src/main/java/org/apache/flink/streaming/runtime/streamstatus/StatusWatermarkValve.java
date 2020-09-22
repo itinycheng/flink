@@ -160,6 +160,7 @@ public class StatusWatermarkValve {
 		}
 	}
 
+	// NOTE - TINY: TODO coGroup align watermark
 	private void findAndOutputNewMinWatermarkAcrossAlignedChannels() throws Exception {
 		long newMinWatermark = Long.MAX_VALUE;
 		boolean hasAlignedChannels = false;
