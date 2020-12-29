@@ -174,6 +174,10 @@ public final class StreamTaskNetworkInput<T> implements StreamTaskInput<T> {
 		}
 	}
 
+    /**
+     * NOTE - TINY: all messages that process in a subTask are in sequential mode. contains record, checkpoint barrier, watermark
+     * @author tiny.wang
+     */
 	private void processElement(StreamElement recordOrMark, DataOutput<T> output) throws Exception {
 		if (recordOrMark.isRecord()){
 			output.emitRecord(recordOrMark.asRecord());
