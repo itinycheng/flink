@@ -77,6 +77,7 @@ public abstract class Trigger<T, W extends Window> implements Serializable {
 	public abstract TriggerResult onProcessingTime(long time, W window, TriggerContext ctx) throws Exception;
 
 	/**
+	 * NOTE - TINY: invoked in WindowOperator.onEventTime, associate with WindowOperator.registerCleanupTimer, InternalTimerService; when an window ended, it's data will auto clear
 	 * Called when an event-time timer that was set using the trigger context fires.
 	 *
 	 * @param time The timestamp at which the timer fired.

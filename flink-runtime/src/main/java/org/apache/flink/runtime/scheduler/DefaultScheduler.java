@@ -172,7 +172,9 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 	@Override
 	protected void startSchedulingInternal() {
 		log.info("Starting scheduling with scheduling strategy [{}]", schedulingStrategy.getClass().getName());
+		// change JobStatus to RUNNING
 		prepareExecutionGraphForNgScheduling();
+		// deploy ExecutionJobVertex[Task]
 		schedulingStrategy.startScheduling();
 	}
 

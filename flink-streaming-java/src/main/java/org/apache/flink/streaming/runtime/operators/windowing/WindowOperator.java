@@ -462,7 +462,7 @@ public class WindowOperator<K, IN, ACC, OUT, W extends Window>
 		if (triggerResult.isPurge()) {
 			windowState.clear();
 		}
-
+		// NOTE - TINY: when an window ended, it's data will auto clear
 		if (windowAssigner.isEventTime() && isCleanupTime(triggerContext.window, timer.getTimestamp())) {
 			clearAllState(triggerContext.window, windowState, mergingWindows);
 		}

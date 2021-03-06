@@ -765,6 +765,7 @@ public class FlinkKafkaProducer<IN>
 	// ----------------------------------- Utilities --------------------------
 
 	/**
+	 * NOTE - TINY: create callback
 	 * Initializes the connection to Kafka.
 	 */
 	@Override
@@ -799,6 +800,7 @@ public class FlinkKafkaProducer<IN>
 		super.open(configuration);
 	}
 
+	// NOTE - TINY: convert data to Kafka ProducerRecord, then send it to kafka with kafkaProducer
 	@Override
 	public void invoke(FlinkKafkaProducer.KafkaTransactionState transaction, IN next, Context context) throws FlinkKafkaException {
 		checkErroneous();
@@ -911,6 +913,7 @@ public class FlinkKafkaProducer<IN>
 
 	// ------------------- Logic for handling checkpoint flushing -------------------------- //
 
+	// NOTE - TINY: invoke by snapshotState and initializeState
 	@Override
 	protected FlinkKafkaProducer.KafkaTransactionState beginTransaction() throws FlinkKafkaException {
 		switch (semantic) {
@@ -931,6 +934,7 @@ public class FlinkKafkaProducer<IN>
 		}
 	}
 
+	// NOTE - TINY:  invoke by snapshotState
 	@Override
 	protected void preCommit(FlinkKafkaProducer.KafkaTransactionState transaction) throws FlinkKafkaException {
 		switch (semantic) {
@@ -946,6 +950,7 @@ public class FlinkKafkaProducer<IN>
 		checkErroneous();
 	}
 
+	// NOTE - TINY: invoke by notifyCheckpointComplete and initalizeState
 	@Override
 	protected void commit(FlinkKafkaProducer.KafkaTransactionState transaction) {
 		if (transaction.isTransactional()) {
@@ -1054,6 +1059,7 @@ public class FlinkKafkaProducer<IN>
 		}
 	}
 
+	// NOTE - TINY: call TwoPhaseCommitFunction.initializeState
 	@Override
 	public void initializeState(FunctionInitializationContext context) throws Exception {
 		if (semantic != FlinkKafkaProducer.Semantic.NONE && !((StreamingRuntimeContext) this.getRuntimeContext()).isCheckpointingEnabled()) {
