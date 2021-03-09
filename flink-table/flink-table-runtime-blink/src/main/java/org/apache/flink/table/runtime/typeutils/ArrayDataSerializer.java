@@ -31,6 +31,7 @@ import org.apache.flink.core.memory.MemorySegmentFactory;
 import org.apache.flink.table.data.ArrayData;
 import org.apache.flink.table.data.ColumnarArrayData;
 import org.apache.flink.table.data.GenericArrayData;
+import org.apache.flink.table.data.ShadowArrayData;
 import org.apache.flink.table.data.binary.BinaryArrayData;
 import org.apache.flink.table.data.binary.BinarySegmentUtils;
 import org.apache.flink.table.data.writer.BinaryArrayWriter;
@@ -88,6 +89,8 @@ public class ArrayDataSerializer extends TypeSerializer<ArrayData> {
 			return copyGenericArray((GenericArrayData) from);
 		} else if (from instanceof BinaryArrayData) {
 			return ((BinaryArrayData) from).copy();
+		} else if (from instanceof ShadowArrayData) {
+			return new ShadowArrayData<>(((ShadowArrayData<?>) from).data);
 		} else {
 			return copyColumnarArray((ColumnarArrayData) from);
 		}

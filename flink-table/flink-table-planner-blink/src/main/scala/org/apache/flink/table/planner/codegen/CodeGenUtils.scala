@@ -809,6 +809,16 @@ object CodeGenUtils {
     }
   }
 
+  def genRestoreInternalConverter(
+      ctx: CodeGeneratorContext,
+      sourceDataType: DataType)
+  : String => String = {
+    val internalTypeTerm = boxedTypeTermForType(sourceDataType.getLogicalType)
+    val converterTerm = ctx.addReusableConverter(sourceDataType)
+    internalTerm =>
+      s"($internalTypeTerm) $converterTerm.restoreInternal($internalTerm)"
+  }
+
   /**
    * Generates code for converting the given term of external data type to an internal data
    * structure.

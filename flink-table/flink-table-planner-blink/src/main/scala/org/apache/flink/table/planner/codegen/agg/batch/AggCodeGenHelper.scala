@@ -558,7 +558,8 @@ object AggCodeGenHelper {
           val resultType = externalResultType.getLogicalType
           val getValueCode = s"${functionIdentifiers(function)}.getValue(" +
             s"${genToExternalConverter(ctx, externalAccType, aggBufferName)})"
-          val resultTerm = genToInternalConverter(ctx, externalResultType)(getValueCode)
+          var resultTerm = genToInternalConverter(ctx, externalResultType)(getValueCode)
+          resultTerm = genRestoreInternalConverter(ctx, externalResultType)(resultTerm)
           val nullTerm = s"${aggBufferName}IsNull"
           GeneratedExpression(resultTerm, nullTerm, NO_CODE, resultType)
       }

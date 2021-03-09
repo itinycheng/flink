@@ -20,12 +20,11 @@ package org.apache.flink.table.data.conversion;
 
 import org.apache.flink.annotation.Internal;
 import org.apache.flink.table.data.ArrayData;
+import org.apache.flink.table.data.ShadowArrayData;
 import org.apache.flink.table.types.DataType;
 import org.apache.flink.table.types.logical.ArrayType;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.apache.commons.lang3.ClassUtils.primitiveToWrapper;
@@ -54,12 +53,16 @@ public class ArrayListConverter<E> implements DataStructureConverter<ArrayData, 
 
 	@Override
 	public ArrayData toInternal(List<E> external) {
-		return elementsConverter.toInternal(external.toArray(arrayKind));
+		return new ShadowArrayData<>(external);
 	}
 
 	@Override
 	public List<E> toExternal(ArrayData internal) {
-		return new ArrayList<>(Arrays.asList(elementsConverter.toExternal(internal)));
+		if (internal instanceof ShadowArrayData) {
+			return ((ShadowArrayData<E>) internal).data;
+		} else {
+			throw new IllegalArgumentException("input value must by type of ShadowArrayData");
+		}
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -83,5 +86,13 @@ public class ArrayListConverter<E> implements DataStructureConverter<ArrayData, 
 		}
 		// e.g. int[][] and Integer[] are Object[]
 		return (Object[]) Array.newInstance(elementClazz, 0);
+	}
+
+	@Override
+	public ArrayData restoreInternal(ArrayData internal) {
+		if (internal instanceof ShadowArrayData) {
+			return elementsConverter.toInternal(((ShadowArrayData<E>) (internal)).data.toArray(arrayKind));
+		}
+		return internal;
 	}
 }

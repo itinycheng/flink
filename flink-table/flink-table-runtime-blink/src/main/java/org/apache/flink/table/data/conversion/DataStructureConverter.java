@@ -77,4 +77,11 @@ public interface DataStructureConverter<I, E> extends Serializable {
 		}
 		return toExternal(internal);
 	}
+
+	/**
+	 * restore internal.
+	 */
+	default I restoreInternal(I internal) {
+		return internal;
+	}
 }
