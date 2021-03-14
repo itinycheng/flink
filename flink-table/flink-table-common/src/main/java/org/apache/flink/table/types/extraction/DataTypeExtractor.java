@@ -307,6 +307,10 @@ public final class DataTypeExtractor {
 		}
 	}
 
+	/**
+	 * NOTE - TINY: invoked in stage of SqlNode Validation, validate UDF and other functions need extract type
+	 * you can use use `@DataTypeHint(bridgedTo = )` to specify the type you need.
+	 */
 	private @Nullable DataType extractArrayType(
 			DataTypeTemplate template,
 			List<Type> typeHierarchy,
